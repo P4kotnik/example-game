@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
+    [Header("Pick up settings")]
     public GameObject objectInSight;
     public KeyCode pickUpKey;
     public KeyCode dropKey;
-
     public float distance = 10f;
 
     [Header("For weapon")]
@@ -22,6 +22,7 @@ public class PickUp : MonoBehaviour
     void Update()
     {
         objectInSight = Check();
+        Debug.Log(objectInSight.name);
         if (objectInSight == null)
             return;
 
@@ -29,20 +30,23 @@ public class PickUp : MonoBehaviour
         {
             wp = objectInSight.transform.gameObject;
 
-            if (Input.GetKeyDown(pickUpKey))
+            if (Input.GetKeyDown(pickUpKey)) // wsadzic do void, id w osobnym skrypcie
             {
-                if (currentWeapon != null && weaponsMenager.secondWeapon != null)
+                if (currentWeapon != null)
                 {
-                    Drop();
-                    weaponsMenager.currentWeaponInHands = null;
-                    PickUpWeapon();
-                    weaponsMenager.currentWeaponInHands = currentWeapon;
-                }
-                else if (currentWeapon != null && weaponsMenager.secondWeapon == null)
-                {
-                    weaponsMenager.secondWeapon = currentWeapon;
-                    PickUpWeapon();
-                    weaponsMenager.currentWeaponInHands = currentWeapon;
+                    if (weaponsMenager.secondWeapon != null)
+                    {
+                        Drop();
+                        weaponsMenager.currentWeaponInHands = null;
+                        PickUpWeapon();
+                        weaponsMenager.currentWeaponInHands = currentWeapon;
+                    }
+                    else
+                    {
+                        weaponsMenager.secondWeapon = currentWeapon;
+                        PickUpWeapon();
+                        weaponsMenager.currentWeaponInHands = currentWeapon;
+                    }
                 }
                 else
                 {
@@ -76,16 +80,15 @@ public class PickUp : MonoBehaviour
             if (hit.transform.tag == "pickable")
             {
                 //canPickUp = true;
-                wp = hit.transform.gameObject;
 
-                return wp;
+                return hit.transform.gameObject;
             }
             return hit.transform.gameObject;
         }
         else
         {
             //canPickUp = false;
-            return wp;
+            return hit.transform.gameObject;
         }
     }
 

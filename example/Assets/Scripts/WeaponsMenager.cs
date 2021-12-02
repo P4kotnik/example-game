@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponsMenager : MonoBehaviour
 {
     public GameObject currentWeaponInHands;
     public GameObject secondWeapon;
     public PickUp pickUp;
+
+    [Header("Weapon UI")]
+    public Image firstWeaponImage;
+    public Image secondWeaponImage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,14 +22,36 @@ public class WeaponsMenager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentWeaponInHands != null && secondWeapon == null)
+        SetImageWeaponsOnUI();
+    }
+
+    void SetImageWeaponsOnUI()
+    {
+        if (currentWeaponInHands != null)
         {
             currentWeaponInHands.SetActive(true);
+            if (secondWeapon != null)
+            {
+                secondWeapon.SetActive(false);
+            }
         }
-        else if (currentWeaponInHands != null && secondWeapon != null)
+
+        if (currentWeaponInHands == null)
         {
-            currentWeaponInHands.SetActive(true);
-            secondWeapon.SetActive(false);
+            firstWeaponImage.enabled = false;
+            secondWeaponImage.enabled = false;
+        }
+        else if (currentWeaponInHands != null)
+        {
+            firstWeaponImage.enabled = true;
+            if (secondWeapon != null)
+            {
+                secondWeaponImage.enabled = true;
+            }
+            else
+            {
+                secondWeaponImage.enabled = false;
+            }
         }
     }
 }
