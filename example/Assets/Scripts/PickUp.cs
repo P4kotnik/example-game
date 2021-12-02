@@ -4,54 +4,88 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    public Transform holdWeapon;
+    public GameObject objectInSight;
+    public KeyCode pickUpKey;
+    public KeyCode dropKey;
+
     public float distance = 10f;
-    GameObject currentWeapon;
+
+    [Header("For weapon")]
+    public WeaponsMenager weaponsMenager;
+    public Transform holdWeapon;
+    public GameObject currentWeapon;
     GameObject wp;
 
-    bool canPickUp;
+    //bool canPickUp;
 
     // Update is called once per frame
     void Update()
     {
-        CheckWeapon();
+        objectInSight = Check();
+        if (objectInSight == null)
+            return;
 
-        if (canPickUp == true)
+        if (objectInSight.tag == "pickable")
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            wp = objectInSight.transform.gameObject;
+
+            if (Input.GetKeyDown(pickUpKey))
             {
-                if (currentWeapon != null)
+                if (currentWeapon != null && weaponsMenager.secondWeapon != null)
                 {
                     Drop();
+                    weaponsMenager.currentWeaponInHands = null;
+                    PickUpWeapon();
+                    weaponsMenager.currentWeaponInHands = currentWeapon;
                 }
-                PickUpWeapon();
+                else if (currentWeapon != null && weaponsMenager.secondWeapon == null)
+                {
+                    weaponsMenager.secondWeapon = currentWeapon;
+                    PickUpWeapon();
+                    weaponsMenager.currentWeaponInHands = currentWeapon;
+                }
+                else
+                {
+                    PickUpWeapon();
+                    weaponsMenager.currentWeaponInHands = currentWeapon;
+                }
             }
         }
 
         if (currentWeapon != null)
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(dropKey))
             {
                 Drop();
+                weaponsMenager.currentWeaponInHands = weaponsMenager.secondWeapon;
+                weaponsMenager.secondWeapon = null;
+                currentWeapon = weaponsMenager.currentWeaponInHands;
             }
         }
     }
 
-    void CheckWeapon()
+    GameObject Check()
     {
+        int layerMask = 1 << 7;
+
+        layerMask = ~layerMask;
         RaycastHit hit;
 
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, distance))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, distance, layerMask))
         {
             if (hit.transform.tag == "pickable")
             {
-                canPickUp = true;
+                //canPickUp = true;
                 wp = hit.transform.gameObject;
+
+                return wp;
             }
+            return hit.transform.gameObject;
         }
         else
         {
-            canPickUp = false;
+            //canPickUp = false;
+            return wp;
         }
     }
 

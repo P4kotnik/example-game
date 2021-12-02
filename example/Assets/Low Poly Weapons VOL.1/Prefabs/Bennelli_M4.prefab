@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23904141403194016}
   - component: {fileID: -5609039160593597642}
   - component: {fileID: 544584708941368167}
+  - component: {fileID: 7775331875414751696}
   m_Layer: 0
   m_Name: Bennelli_M4
   m_TagString: pickable
@@ -114,6 +115,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.03434936, y: 0.19232099, z: 0.97656214}
   m_Center: {x: 0, y: -0.06046728, z: 0.009858891}
+--- !u!114 &7775331875414751696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236257789494122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2faa5962c41a8248a662d43c06d85fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 1
 --- !u!1 &1326079549577358
 GameObject:
   m_ObjectHideFlags: 0

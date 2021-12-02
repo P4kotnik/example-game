@@ -8,9 +8,9 @@ public class PlayerMove : MonoBehaviour
 
     [Header("Atributs")]
     public float speed = 10f;
-    public float gravity = -9.81f;
 
     [Header("Jump, Gravity")]
+    public float gravity = -9.81f;
     public Transform groundCheck;
     public bool isGround;
     public float groundDistance = 0.4f;

@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 23860282398207496}
   - component: {fileID: -5992612005588942694}
   - component: {fileID: 3274345350136551160}
+  - component: {fileID: 8681113878681666584}
   m_Layer: 0
   m_Name: AK74
   m_TagString: pickable
@@ -277,6 +278,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.033782385, y: 0.22679614, z: 0.7707256}
   m_Center: {x: -0.0017576702, y: -0.066226326, z: -0.062597096}
+--- !u!114 &8681113878681666584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487774384131766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2faa5962c41a8248a662d43c06d85fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 0
 --- !u!1 &1927369336514790
 GameObject:
   m_ObjectHideFlags: 0
