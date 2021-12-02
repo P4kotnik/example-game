@@ -127,8 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0a7c0ae889c974493c3b68aef9b321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 1
   weaponImage: {fileID: 21300026, guid: 6674e8c43c63e4f4184cbd009379498d, type: 3}
+  magazineCapacity: 8
+  timeBetweenShots: 1
+  typeOfWeapon: shoutgun
 --- !u!1 &1326079549577358
 GameObject:
   m_ObjectHideFlags: 0

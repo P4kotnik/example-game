@@ -9,6 +9,8 @@ public class PickUp : MonoBehaviour
     public KeyCode pickUpKey;
     public KeyCode dropKey;
     public float distance = 10f;
+    public float dropUpDistance = 15f;
+    public float dropForwardDistance = 10f;
 
     [Header("For weapon")]
     public WeaponsMenager weaponsMenager;
@@ -21,8 +23,19 @@ public class PickUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentWeapon != null)
+        {
+            if (Input.GetKeyDown(dropKey))
+            {
+                Drop();
+                weaponsMenager.currentWeaponInHands = weaponsMenager.secondWeapon;
+                weaponsMenager.secondWeapon = null;
+                currentWeapon = weaponsMenager.currentWeaponInHands;
+            }
+        }
+
         objectInSight = Check();
-        Debug.Log(objectInSight.name);
+
         if (objectInSight == null)
             return;
 
@@ -55,17 +68,6 @@ public class PickUp : MonoBehaviour
                 }
             }
         }
-
-        if (currentWeapon != null)
-        {
-            if (Input.GetKeyDown(dropKey))
-            {
-                Drop();
-                weaponsMenager.currentWeaponInHands = weaponsMenager.secondWeapon;
-                weaponsMenager.secondWeapon = null;
-                currentWeapon = weaponsMenager.currentWeaponInHands;
-            }
-        }
     }
 
     GameObject Check()
@@ -88,7 +90,7 @@ public class PickUp : MonoBehaviour
         else
         {
             //canPickUp = false;
-            return hit.transform.gameObject;
+            return null;
         }
     }
 
@@ -105,6 +107,13 @@ public class PickUp : MonoBehaviour
     {
         currentWeapon.transform.parent = null;
         currentWeapon.GetComponent<Rigidbody>().isKinematic = false;
+
+        //throwing weapon
+        currentWeapon.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * dropForwardDistance, ForceMode.Impulse);
+        currentWeapon.GetComponent<Rigidbody>().AddForce(Camera.main.transform.up * dropUpDistance, ForceMode.Impulse);
+        float random = Random.Range(-1, 1);
+        currentWeapon.GetComponent<Rigidbody>().AddTorque(new Vector3(random, random, random) * 10);
+
         currentWeapon = null;
     }
 }

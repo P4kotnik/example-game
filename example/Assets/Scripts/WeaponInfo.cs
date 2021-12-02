@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class WeaponInfo : MonoBehaviour
 {
-    public int ID;
     public Sprite weaponImage;
+
+    public int magazineCapacity;
+    public float timeBetweenShots;
+    public string typeOfWeapon;
 }
