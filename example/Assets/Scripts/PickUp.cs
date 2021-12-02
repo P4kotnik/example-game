@@ -23,6 +23,7 @@ public class PickUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentWeapon = weaponsMenager.currentWeaponInHands;
         if (currentWeapon != null)
         {
             if (Input.GetKeyDown(dropKey))

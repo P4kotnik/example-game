@@ -7,6 +7,7 @@ public class WeaponsMenager : MonoBehaviour
 {
     public GameObject currentWeaponInHands;
     public GameObject secondWeapon;
+    GameObject changeWeapon;
     public PickUp pickUp;
 
     [Header("Weapon UI")]
@@ -23,6 +24,31 @@ public class WeaponsMenager : MonoBehaviour
     void Update()
     {
         SetImageWeaponsOnUI();
+
+        if (secondWeapon != null)
+        {
+            secondWeapon.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2) && secondWeapon != null)
+        {
+            changeWeapon = currentWeaponInHands;
+            secondWeapon.SetActive(true);
+            currentWeaponInHands = secondWeapon;
+            secondWeapon = changeWeapon;
+            secondWeapon.SetActive(false);
+            changeWeapon = null;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1) && secondWeapon != null)
+        {
+            changeWeapon = currentWeaponInHands;
+            secondWeapon.SetActive(true);
+            currentWeaponInHands = secondWeapon;
+            secondWeapon = changeWeapon;
+            secondWeapon.SetActive(false);
+            changeWeapon = null;
+        }
     }
 
     void SetImageWeaponsOnUI()
