@@ -355,6 +355,9 @@ MonoBehaviour:
   pickUp: {fileID: 604926049}
   firstWeaponImage: {fileID: 1845779321}
   secondWeaponImage: {fileID: 1223362912}
+  magazineCapacity: 0
+  maxNumberOfMagazins: 0
+  currentMagazineCapacity: 0
 --- !u!1 &566283482
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,6 +947,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3883086841476455380, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
+      propertyPath: fireRate
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1487774384131766, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
       propertyPath: m_Name
       value: AK74 (1)
@@ -1189,6 +1196,10 @@ PrefabInstance:
     - target: {fileID: 4243371153570508, guid: 8b0b86b42def11849a8eba21f4a6a684, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439891949874879896, guid: 8b0b86b42def11849a8eba21f4a6a684, type: 3}
+      propertyPath: fireRate
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b0b86b42def11849a8eba21f4a6a684, type: 3}

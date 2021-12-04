@@ -129,7 +129,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponImage: {fileID: 21300026, guid: 6674e8c43c63e4f4184cbd009379498d, type: 3}
   magazineCapacity: 8
-  timeBetweenShots: 1
+  currentMagazineCapacity: 0
+  maxNumberOfMagazins: 8
+  fireRate: 1
   typeOfWeapon: shoutgun
 --- !u!1 &1326079549577358
 GameObject:

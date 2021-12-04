@@ -292,7 +292,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponImage: {fileID: 21300044, guid: 6674e8c43c63e4f4184cbd009379498d, type: 3}
   magazineCapacity: 30
-  timeBetweenShots: 0.2
+  currentMagazineCapacity: 0
+  maxNumberOfMagazins: 8
+  fireRate: 0.2
   typeOfWeapon: normal
 --- !u!1 &1927369336514790
 GameObject:

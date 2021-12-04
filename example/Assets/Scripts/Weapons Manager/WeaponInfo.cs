@@ -8,6 +8,7 @@ public class WeaponInfo : MonoBehaviour
     public Sprite weaponImage;
 
     public int magazineCapacity;
-    public float timeBetweenShots;
+    public int maxNumberOfMagazins;
+    public float fireRate;
     public string typeOfWeapon;
 }
