@@ -15,7 +15,6 @@ public class WeaponInfo : MonoBehaviour
     public string typeOfWeapon;
 
     public bool isEquipment;
-    public bool ammoOut;
 
     private void Start()
     {
@@ -47,13 +46,11 @@ public class WeaponInfo : MonoBehaviour
         if (currentNumberOfMagazins < 0)
         {
             Debug.Log("KONIEC AMUNICJI!!!");
-            ammoOut = true;
         }
         else
         {
             currentMagazineCapacity = magazineCapacity;
             currentNumberOfMagazins--;
-            ammoOut = false;
         }
     }
 }

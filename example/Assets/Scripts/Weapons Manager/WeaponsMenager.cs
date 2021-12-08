@@ -25,6 +25,7 @@ public class WeaponsMenager : MonoBehaviour
     public bool isReloading;
     public bool readyToShot;
     public bool ammoOut;
+    public bool isShot;
 
     // Start is called before the first frame update
     void Start()
@@ -45,13 +46,12 @@ public class WeaponsMenager : MonoBehaviour
             currentMagazineCapacity = currentWeaponInHands.GetComponent<WeaponInfo>().currentMagazineCapacity;
             maxNumberOfMagazins = currentWeaponInHands.GetComponent<WeaponInfo>().maxNumberOfMagazins;
             currentNumberOfMagazins = currentWeaponInHands.GetComponent<WeaponInfo>().currentNumberOfMagazins;
-            ammoOut = currentWeaponInHands.GetComponent<WeaponInfo>().ammoOut;
 
             fireRate = currentWeaponInHands.GetComponent<WeaponInfo>().fireRate;
 
             if (Input.GetMouseButton(0) && readyToShot == true)
             {
-                Shot();
+                isShot = Shot();
                 readyToShot = false;
                 fireTimer = fireRate;
             }
@@ -127,7 +127,16 @@ public class WeaponsMenager : MonoBehaviour
 
     public bool Shot()
     {
-        if (currentMagazineCapacity <= 0 && ammoOut != true)
+        if (currentNumberOfMagazins <= 0 && currentMagazineCapacity <= 0)
+        {
+            ammoOut = true;
+        }
+        else
+        {
+            ammoOut = false;
+        }
+
+        if (currentMagazineCapacity <= 0 && ammoOut == false)
         {
             isReloading = true;
             currentWeaponInHands.GetComponent<WeaponInfo>().Reloading();
@@ -137,7 +146,7 @@ public class WeaponsMenager : MonoBehaviour
             isReloading = false;
         }
 
-        if (isReloading == true && ammoOut == true)
+        if (isReloading == true || ammoOut == true)
         {
             return false;
         }
