@@ -6,6 +6,7 @@ public class ShootingShoutgun : MonoBehaviour
 {
     public WeaponInfo weaponInfo;
     public ParticleSystem shotParticle;
+    public GameObject impactEffect;
     WeaponsMenager weaponsMenager;
     Camera fpsCamera;
     bool isEquipment;
@@ -41,6 +42,8 @@ public class ShootingShoutgun : MonoBehaviour
             {
                 target.TakeDamage(damage);
             }
+
+            Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
         }
     }
 }

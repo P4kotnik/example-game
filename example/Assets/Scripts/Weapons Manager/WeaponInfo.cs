@@ -50,6 +50,7 @@ public class WeaponInfo : MonoBehaviour
         }
         else
         {
+
             currentMagazineCapacity = magazineCapacity;
             currentNumberOfMagazins--;
         }

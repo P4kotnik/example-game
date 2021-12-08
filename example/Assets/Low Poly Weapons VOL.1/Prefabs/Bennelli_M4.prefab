@@ -134,7 +134,7 @@ MonoBehaviour:
   currentMagazineCapacity: 0
   maxNumberOfMagazins: 8
   currentNumberOfMagazins: 0
-  fireRate: 1
+  fireRate: 0.7
   typeOfWeapon: shoutgun
   isEquipment: 0
 --- !u!114 &7167064102403715617
@@ -151,6 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponInfo: {fileID: 1439891949874879896}
   shotParticle: {fileID: 6349575427282896459}
+  impactEffect: {fileID: 100002, guid: 56bfc2f4b4a0c534c8ef3d0fd1124c44, type: 3}
   range: 100
   damage: 10
 --- !u!1 &1326079549577358
