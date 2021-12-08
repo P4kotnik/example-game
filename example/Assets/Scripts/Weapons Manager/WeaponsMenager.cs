@@ -49,11 +49,15 @@ public class WeaponsMenager : MonoBehaviour
 
             fireRate = currentWeaponInHands.GetComponent<WeaponInfo>().fireRate;
 
-            if (Input.GetMouseButton(0) && readyToShot == true)
+            if (Input.GetButton("Fire1") && readyToShot == true)
             {
-                isShot = Shot();
+                isShot = ShotInfo(true);
                 readyToShot = false;
                 fireTimer = fireRate;
+            }
+            else
+            {
+                isShot = ShotInfo(false);
             }
 
             if (fireTimer >= 0)
@@ -104,17 +108,7 @@ public class WeaponsMenager : MonoBehaviour
             secondWeapon.SetActive(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2) && secondWeapon != null)
-        {
-            changeWeapon = currentWeaponInHands;
-            secondWeapon.SetActive(true);
-            currentWeaponInHands = secondWeapon;
-            secondWeapon = changeWeapon;
-            secondWeapon.SetActive(false);
-            changeWeapon = null;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha1) && secondWeapon != null)
+        if ((Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha1)) && secondWeapon != null)
         {
             changeWeapon = currentWeaponInHands;
             secondWeapon.SetActive(true);
@@ -125,7 +119,7 @@ public class WeaponsMenager : MonoBehaviour
         }
     }
 
-    public bool Shot()
+    public bool ShotInfo(bool shot)
     {
         if (currentNumberOfMagazins <= 0 && currentMagazineCapacity <= 0)
         {
@@ -150,10 +144,14 @@ public class WeaponsMenager : MonoBehaviour
         {
             return false;
         }
-        else
+        else if (shot)
         {
             currentWeaponInHands.GetComponent<WeaponInfo>().currentMagazineCapacity--;
-            return true;
+            return shot;
+        }
+        else
+        {
+            return false;
         }
     }
 }

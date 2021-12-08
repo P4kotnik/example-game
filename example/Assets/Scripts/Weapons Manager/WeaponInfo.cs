@@ -11,6 +11,7 @@ public class WeaponInfo : MonoBehaviour
     public int currentMagazineCapacity;
     public int maxNumberOfMagazins;
     public int currentNumberOfMagazins;
+
     public float fireRate;
     public string typeOfWeapon;
 
