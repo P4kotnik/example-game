@@ -44,15 +44,17 @@ public class WeaponInfo : MonoBehaviour
 
     public void Reloading()
     {
-        if (currentNumberOfMagazins < 0)
+        if (currentNumberOfMagazins > 0)
         {
-            Debug.Log("KONIEC AMUNICJI!!!");
+            StartCoroutine(Reload());
         }
-        else
-        {
+    }
 
-            currentMagazineCapacity = magazineCapacity;
-            currentNumberOfMagazins--;
-        }
+    IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(1); //give animation
+
+        currentMagazineCapacity = magazineCapacity;
+        currentNumberOfMagazins--;
     }
 }

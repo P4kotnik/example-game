@@ -32,9 +32,12 @@ public class ShootingNormal : MonoBehaviour
 
     void ShoutgunShot()
     {
+        int layerMask = 1 << 7;
+
+        layerMask = ~layerMask;
         shotParticle.Play();
         RaycastHit hit;
-        if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, range))
+        if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, range, layerMask))
         {
             Debug.Log(hit.transform.name);
             Target target = hit.transform.GetComponent<Target>();

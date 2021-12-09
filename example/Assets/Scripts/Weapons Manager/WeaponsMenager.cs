@@ -130,12 +130,12 @@ public class WeaponsMenager : MonoBehaviour
             ammoOut = false;
         }
 
-        if (currentMagazineCapacity <= 0 && ammoOut == false)
+        if (currentMagazineCapacity <= 0 && ammoOut == false && isReloading == false)
         {
             isReloading = true;
             currentWeaponInHands.GetComponent<WeaponInfo>().Reloading();
         }
-        else
+        else if(currentMagazineCapacity > 0)
         {
             isReloading = false;
         }
