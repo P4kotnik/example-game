@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class WeaponInfo : MonoBehaviour
 {
     public Sprite weaponImage;
+    public Transform leftHand;
+    public Transform rightHand;
 
     public int magazineCapacity;
     public int currentMagazineCapacity;
