@@ -10,7 +10,7 @@ public class PlayerMove : MonoBehaviour
     public float speed = 10f;
 
     [Header("Jump, Gravity")]
-    public float gravity = -9.81f;
+    public float gravity = -19.62f;
     public Transform groundCheck;
     public bool isGround;
     public float groundDistance = 0.4f;
