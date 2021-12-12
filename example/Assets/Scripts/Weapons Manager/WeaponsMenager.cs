@@ -7,7 +7,6 @@ public class WeaponsMenager : MonoBehaviour
 {
     public GameObject currentWeaponInHands;
     public GameObject secondWeapon;
-    public RecoilScript recoilScript;
     GameObject changeWeapon;
     public PickUp pickUp;
 
@@ -148,7 +147,6 @@ public class WeaponsMenager : MonoBehaviour
         else if (shot)
         {
             currentWeaponInHands.GetComponent<WeaponInfo>().currentMagazineCapacity--;
-            recoilScript.Fire();
             return shot;
         }
         else

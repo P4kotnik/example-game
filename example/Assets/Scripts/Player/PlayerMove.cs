@@ -8,10 +8,9 @@ public class PlayerMove : MonoBehaviour
 
     [Header("Atributs")]
     public float speed = 10f;
-    public bool isMove;
 
     [Header("Jump, Gravity")]
-    public float gravity = -19.62f;
+    public float gravity = -9.81f;
     public Transform groundCheck;
     public bool isGround;
     public float groundDistance = 0.4f;
@@ -39,14 +38,6 @@ public class PlayerMove : MonoBehaviour
 
         Vector3 move = (transform.right * x) + (transform.forward * z);
         characterController.Move(move * speed * Time.deltaTime);
-        if (x != 0 || z != 0)
-        {
-            isMove = true;
-        }
-        else
-        {
-            isMove = false;
-        }
 
         velocity.y += gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
