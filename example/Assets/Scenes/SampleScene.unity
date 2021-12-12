@@ -154,6 +154,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &143474856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 143474857}
+  m_Layer: 0
+  m_Name: RecoilRotation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &143474857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143474856}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 962741816}
+  m_Father: {fileID: 2038112539}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &171337610 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 6349575427282896459, guid: 8b0b86b42def11849a8eba21f4a6a684, type: 3}
@@ -442,7 +473,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 962741816}
+  - {fileID: 1459217079}
   m_Father: {fileID: 963194228}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -460,6 +491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentWeaponInHands: {fileID: 0}
   secondWeapon: {fileID: 0}
+  recoilScript: {fileID: 962741818}
   pickUp: {fileID: 604926049}
   firstWeaponImage: {fileID: 1845779321}
   secondWeaponImage: {fileID: 1223362912}
@@ -536,7 +568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  gravity: -9.81
+  gravity: -19.62
   groundCheck: {fileID: 1094665024}
   isGround: 0
   groundDistance: 0.4
@@ -991,6 +1023,7 @@ GameObject:
   m_Component:
   - component: {fileID: 962741816}
   - component: {fileID: 962741817}
+  - component: {fileID: 962741818}
   m_Layer: 7
   m_Name: HoldingWeapon
   m_TagString: Untagged
@@ -1005,12 +1038,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962741815}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.15, y: -0.17, z: 0.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.01000005, z: 0.07499999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1143696021}
-  m_Father: {fileID: 488824952}
+  m_Father: {fileID: 143474857}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &962741817
@@ -1027,6 +1060,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smouth: 8
   swayMultipler: 2
+--- !u!114 &962741818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962741815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84166e51aa22b24bb3dd374eeed1266, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recoilPositionTransform: {fileID: 2038112539}
+  recoilRotationTransform: {fileID: 143474857}
+  positionDampTime: 6
+  rotationDampTime: 9
+  recoil1: 35
+  recoil2: 50
+  recoil3: 35
+  recoil4: 50
+  recoilRotation: {x: -10, y: 4, z: 6}
+  recoilKickBack: {x: 0.1, y: 0.05, z: -0.3}
+  recoilRotationAim: {x: 0, y: 0, z: 0}
+  recoilKickBackAim: {x: 0, y: 0, z: 0}
+  currentRecoil1: {x: 0, y: 0, z: 0}
+  currentRecoil2: {x: 0, y: 0, z: 0}
+  currentRecoil3: {x: 0, y: 0, z: 0}
+  currentRecoil4: {x: 0, y: 0, z: 0}
+  rotationOutput: {x: 0, y: 0, z: 0}
+  aim: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,7 +1503,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -3883086841476455380, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
       propertyPath: fireRate
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1487774384131766, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
       propertyPath: m_Name
@@ -1708,6 +1771,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1459217078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1459217079}
+  m_Layer: 0
+  m_Name: RecoilCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1459217079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459217078}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.15, y: -0.18, z: 0.425}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2038112539}
+  m_Father: {fileID: 488824952}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1657673055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1804,7 +1898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1682522963
 Transform:
   m_ObjectHideFlags: 0
@@ -2169,11 +2263,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_Name: pb_Mesh15982
-=======
-  m_Name: pb_Mesh15988
->>>>>>> parent of 35f234d (recoil2)
+  m_Name: pb_Mesh16006
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2427,6 +2517,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891653271}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2038112538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2038112539}
+  m_Layer: 0
+  m_Name: RecoilPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2038112539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038112538}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 143474857}
+  m_Father: {fileID: 1459217079}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2135668208
 GameObject:
   m_ObjectHideFlags: 0
@@ -2440,6 +2561,7 @@ GameObject:
   - component: {fileID: 2135668212}
   - component: {fileID: 2135668211}
   - component: {fileID: 2135668210}
+  - component: {fileID: 2135668214}
   m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
@@ -2740,3 +2862,16 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &2135668214
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135668208}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 50, y: 1, z: 25}
+  m_Center: {x: 25, y: 0.5, z: -12.5}
