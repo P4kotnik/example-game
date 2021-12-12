@@ -8,6 +8,7 @@ public class WeaponsMenager : MonoBehaviour
     public GameObject currentWeaponInHands;
     public GameObject secondWeapon;
     public RecoilScript recoilScript;
+    public PlayerMove playerMove;
     GameObject changeWeapon;
     public PickUp pickUp;
 
@@ -28,6 +29,8 @@ public class WeaponsMenager : MonoBehaviour
     public bool ammoOut;
     public bool isShot;
 
+    bool isSprint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +43,7 @@ public class WeaponsMenager : MonoBehaviour
     {
         SetImageWeaponsOnUI();
         ChangeWeapon();
+        isSprint = playerMove.isSprint;
 
         if (currentWeaponInHands != null)
         {
@@ -141,7 +145,7 @@ public class WeaponsMenager : MonoBehaviour
             isReloading = false;
         }
 
-        if (isReloading == true || ammoOut == true)
+        if (isReloading == true || ammoOut == true || isSprint == true)
         {
             return false;
         }

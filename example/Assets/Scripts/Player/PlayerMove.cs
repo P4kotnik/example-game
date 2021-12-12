@@ -8,7 +8,13 @@ public class PlayerMove : MonoBehaviour
 
     [Header("Atributs")]
     public float speed = 10f;
+    public float sprint = 20f;
+    float defaultSpeed;
+    [Space(10)]
     public bool isMove;
+    public bool isSprint;
+    [Space(10)]
+    public KeyCode sprintKey;
 
     [Header("Jump, Gravity")]
     public float gravity = -19.62f;
@@ -23,6 +29,7 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        defaultSpeed = speed;
     }
 
     // Update is called once per frame
@@ -37,9 +44,10 @@ public class PlayerMove : MonoBehaviour
             velocity.y = -2f;
         }
 
+        //move
         Vector3 move = (transform.right * x) + (transform.forward * z);
         characterController.Move(move * speed * Time.deltaTime);
-        if (x != 0 || z != 0)
+        if ((Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) && isGround == true)
         {
             isMove = true;
         }
@@ -47,13 +55,29 @@ public class PlayerMove : MonoBehaviour
         {
             isMove = false;
         }
+        Sprint();
 
+        //gravity
         velocity.y += gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
 
         if (isGround && Input.GetButtonDown("Jump"))
         {
             velocity.y = Mathf.Sqrt(maxJumpHeight * -2 * gravity);
+        }
+    }
+
+    void Sprint()
+    {
+        if (Input.GetKey(sprintKey) && isMove == true)
+        {
+            speed = sprint;
+            isSprint = true;
+        }
+        else
+        {
+            speed = defaultSpeed;
+            isSprint = false;
         }
     }
 }
