@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 3274345350136551160}
   - component: {fileID: -3883086841476455380}
   - component: {fileID: 4084074855770104708}
+  - component: {fileID: 7552370173585558447}
   m_Layer: 0
   m_Name: AK74
   m_TagString: pickable
@@ -294,9 +295,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0a7c0ae889c974493c3b68aef9b321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  recoilRotation: {x: -10, y: 4, z: 6}
+  recoilKickBack: {x: 0.1, y: 0.05, z: -0.3}
   weaponImage: {fileID: 21300044, guid: 6674e8c43c63e4f4184cbd009379498d, type: 3}
   leftHand: {fileID: 6628425684397965053}
   rightHand: {fileID: 2752557040901863537}
+  weaponAnimation: {fileID: 7552370173585558447}
   magazineCapacity: 30
   currentMagazineCapacity: 0
   maxNumberOfMagazins: 8
@@ -321,6 +325,22 @@ MonoBehaviour:
   impactEffect: {fileID: 100002, guid: 56bfc2f4b4a0c534c8ef3d0fd1124c44, type: 3}
   range: 100
   damage: 10
+--- !u!111 &7552370173585558447
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487774384131766}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 2e00fd4a764659647a279dd5e3b88ced, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1927369336514790
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 544584708941368167}
   - component: {fileID: 1439891949874879896}
   - component: {fileID: 7167064102403715617}
+  - component: {fileID: -9154867690905627292}
   m_Layer: 0
   m_Name: Bennelli_M4
   m_TagString: pickable
@@ -131,14 +132,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0a7c0ae889c974493c3b68aef9b321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  recoilRotation: {x: -400, y: 4, z: 6}
+  recoilKickBack: {x: 0.1, y: 0.05, z: -3}
   weaponImage: {fileID: 21300026, guid: 6674e8c43c63e4f4184cbd009379498d, type: 3}
   leftHand: {fileID: 5568029502493708002}
   rightHand: {fileID: 8009141366069814524}
+  weaponAnimation: {fileID: -9154867690905627292}
   magazineCapacity: 8
   currentMagazineCapacity: 0
   maxNumberOfMagazins: 8
   currentNumberOfMagazins: 0
-  fireRate: 0.7
+  fireRate: 1
   typeOfWeapon: shoutgun
   isEquipment: 0
 --- !u!114 &7167064102403715617
@@ -156,8 +160,26 @@ MonoBehaviour:
   weaponInfo: {fileID: 1439891949874879896}
   shotParticle: {fileID: 6349575427282896459}
   impactEffect: {fileID: 100002, guid: 56bfc2f4b4a0c534c8ef3d0fd1124c44, type: 3}
+  shoutgunShot: {fileID: -9154867690905627292}
   range: 100
   damage: 10
+--- !u!111 &-9154867690905627292
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236257789494122}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 1150f8c572d1b3e4a87c50584fb7eb2f, type: 2}
+  - {fileID: 7400000, guid: faa279ce33b7aa349b7ef8c72c19ae75, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1326079549577358
 GameObject:
   m_ObjectHideFlags: 0

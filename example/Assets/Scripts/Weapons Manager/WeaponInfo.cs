@@ -5,9 +5,15 @@ using UnityEngine.UI;
 
 public class WeaponInfo : MonoBehaviour
 {
+    [Header("WeaponInfo recoil rotation:x - kickBack up")]
+    public Vector3 recoilRotation;
+    [Header("WeaponInfo recoil rotation:z - kickBack back")]
+    public Vector3 recoilKickBack;
+
     public Sprite weaponImage;
     public Transform leftHand;
     public Transform rightHand;
+    public Animation weaponAnimation;
 
     public int magazineCapacity;
     public int currentMagazineCapacity;
@@ -54,7 +60,8 @@ public class WeaponInfo : MonoBehaviour
 
     IEnumerator Reload()
     {
-        yield return new WaitForSeconds(1); //give animation
+        weaponAnimation.Play(gameObject.name + "Reload");
+         yield return new WaitUntil(() => !weaponAnimation.isPlaying); 
 
         currentMagazineCapacity = magazineCapacity;
         currentNumberOfMagazins--;

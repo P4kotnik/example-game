@@ -185,11 +185,6 @@ Transform:
   m_Father: {fileID: 2038112539}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!198 &171337610 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6349575427282896459, guid: 8b0b86b42def11849a8eba21f4a6a684, type: 3}
-  m_PrefabInstance: {fileID: 1092109222}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &310216321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -197,10 +192,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -3883086841476455380, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
-      propertyPath: fireRate
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 1487774384131766, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
       propertyPath: m_Name
       value: AK74
@@ -1079,6 +1070,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c84166e51aa22b24bb3dd374eeed1266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponsMenager: {fileID: 488824953}
   recoilPositionTransform: {fileID: 2038112539}
   recoilRotationTransform: {fileID: 143474857}
   positionDampTime: 6
@@ -1087,8 +1079,6 @@ MonoBehaviour:
   recoil2: 50
   recoil3: 35
   recoil4: 50
-  recoilRotation: {x: -10, y: 4, z: 6}
-  recoilKickBack: {x: 0.1, y: 0.05, z: -0.3}
   recoilRotationAim: {x: 0, y: 0, z: 0}
   recoilKickBackAim: {x: 0, y: 0, z: 0}
   currentRecoil1: {x: 0, y: 0, z: 0}
@@ -1420,40 +1410,10 @@ PrefabInstance:
       value: 29.22
       objectReference: {fileID: 0}
     - target: {fileID: 1439891949874879896, guid: 8b0b86b42def11849a8eba21f4a6a684, type: 3}
-      propertyPath: shotParticle
-      value: 
-      objectReference: {fileID: 171337610}
-    - target: {fileID: 4544365377156751285, guid: 8b0b86b42def11849a8eba21f4a6a684, type: 3}
-      propertyPath: InitialModule.startSizeY.minMaxState
-      value: 3
+      propertyPath: recoilRotation.x
+      value: -400
       objectReference: {fileID: 0}
-    - target: {fileID: 4544365377156751285, guid: 8b0b86b42def11849a8eba21f4a6a684, type: 3}
-      propertyPath: InitialModule.startSizeZ.minMaxState
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6349575427282896457, guid: 8b0b86b42def11849a8eba21f4a6a684, type: 3}
-      propertyPath: InitialModule.startSizeY.minMaxState
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6349575427282896457, guid: 8b0b86b42def11849a8eba21f4a6a684, type: 3}
-      propertyPath: InitialModule.startSizeZ.minMaxState
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6349575427282896463, guid: 8b0b86b42def11849a8eba21f4a6a684, type: 3}
-      propertyPath: InitialModule.startRotationX.minMaxState
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6349575427282896463, guid: 8b0b86b42def11849a8eba21f4a6a684, type: 3}
-      propertyPath: InitialModule.startRotationY.minMaxState
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7167064102403715617, guid: 8b0b86b42def11849a8eba21f4a6a684, type: 3}
-      propertyPath: shotParticle
-      value: 
-      objectReference: {fileID: 171337610}
-    m_RemovedComponents:
-    - {fileID: 4544365377148220211, guid: 8b0b86b42def11849a8eba21f4a6a684, type: 3}
-    - {fileID: 6349575427257592525, guid: 8b0b86b42def11849a8eba21f4a6a684, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b0b86b42def11849a8eba21f4a6a684, type: 3}
 --- !u!1 &1094665023
 GameObject:
@@ -2304,7 +2264,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18016
+  m_Name: pb_Mesh16014
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

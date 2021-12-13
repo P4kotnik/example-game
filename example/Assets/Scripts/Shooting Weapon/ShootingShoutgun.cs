@@ -7,6 +7,7 @@ public class ShootingShoutgun : MonoBehaviour
     public WeaponInfo weaponInfo;
     public ParticleSystem shotParticle;
     public GameObject impactEffect;
+    public Animation shoutgunShot;
     WeaponsMenager weaponsMenager;
     Camera fpsCamera;
     bool isEquipment;
@@ -32,10 +33,11 @@ public class ShootingShoutgun : MonoBehaviour
 
     void ShoutgunShot()
     {
+        shotParticle.Play(); //first play particle then recoil (to improve)
         int layerMask = 1 << 7;
 
         layerMask = ~layerMask;
-        shotParticle.Play();
+        shoutgunShot.Play(gameObject.name + "Shot");
         RaycastHit hit;
         if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, range, layerMask))
         {

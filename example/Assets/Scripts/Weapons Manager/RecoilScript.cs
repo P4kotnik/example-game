@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RecoilScript : MonoBehaviour
 {
+    public WeaponsMenager weaponsMenager;
+
     [Header("Recoil Transform")]
     public Transform recoilPositionTransform;
     public Transform recoilRotationTransform;
@@ -17,8 +19,8 @@ public class RecoilScript : MonoBehaviour
     public float recoil3;
     public float recoil4;
     [Space(10)]
-    public Vector3 recoilRotation;
-    public Vector3 recoilKickBack;
+    Vector3 recoilRotation;
+    Vector3 recoilKickBack;
 
     public Vector3 recoilRotationAim;
     public Vector3 recoilKickBackAim;
@@ -35,6 +37,12 @@ public class RecoilScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (weaponsMenager.currentWeaponInHands != null)
+        {
+            recoilRotation = weaponsMenager.currentWeaponInHands.GetComponent<WeaponInfo>().recoilRotation;
+            recoilKickBack = weaponsMenager.currentWeaponInHands.GetComponent<WeaponInfo>().recoilKickBack;
+        }
+
         currentRecoil1 = Vector3.Lerp(currentRecoil1, Vector3.zero, recoil1 * Time.deltaTime);
         currentRecoil2 = Vector3.Lerp(currentRecoil2, currentRecoil1, recoil2 * Time.deltaTime);
         currentRecoil3 = Vector3.Lerp(currentRecoil3, Vector3.zero, recoil3 * Time.deltaTime);
