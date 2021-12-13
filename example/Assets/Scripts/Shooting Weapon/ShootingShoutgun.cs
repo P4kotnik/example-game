@@ -14,6 +14,7 @@ public class ShootingShoutgun : MonoBehaviour
 
     public float range = 100f;
     public float damage = 10f;
+    public float dispersion = 0.2f;
 
     void Start()
     {
@@ -38,16 +39,23 @@ public class ShootingShoutgun : MonoBehaviour
 
         layerMask = ~layerMask;
         shoutgunShot.Play(gameObject.name + "Shot");
-        RaycastHit hit;
-        if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, range, layerMask))
+        int i = 0;
+        while (i <= 10)
         {
-            Target target = hit.transform.GetComponent<Target>();
-            if (target != null)
+            float x = Random.Range(-dispersion, dispersion);
+            float y = Random.Range(-dispersion, dispersion);
+            Vector3 bullet = new Vector3(x, y, 0);
+            RaycastHit hit;
+            if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward + bullet, out hit, range, layerMask))
             {
-                target.TakeDamage(damage);
+                Target target = hit.transform.GetComponent<Target>();
+                if (target != null)
+                {
+                    target.TakeDamage(damage);
+                }
+                Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             }
-
-            Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            i++;
         }
     }
 }

@@ -45,8 +45,10 @@ public class WeaponInfo : MonoBehaviour
     {
         if (transform.IsChildOf(GameObject.Find("Player").transform))
         {
+            gameObject.layer = 7;
             return true;
         }
+        gameObject.layer = 0;
         return false;
     }
 
