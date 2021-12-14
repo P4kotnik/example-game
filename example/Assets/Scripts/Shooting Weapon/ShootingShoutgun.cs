@@ -42,9 +42,7 @@ public class ShootingShoutgun : MonoBehaviour
         int i = 0;
         while (i <= 10)
         {
-            float x = Random.Range(-dispersion, dispersion);
-            float y = Random.Range(-dispersion, dispersion);
-            Vector3 bullet = new Vector3(x, y, 0);
+            Vector3 bullet = new Vector3(Random.Range(-dispersion, dispersion), Random.Range(-dispersion, dispersion), Random.Range(-dispersion, dispersion));
             RaycastHit hit;
             if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward + bullet, out hit, range, layerMask))
             {

@@ -163,6 +163,7 @@ MonoBehaviour:
   shoutgunShot: {fileID: -9154867690905627292}
   range: 100
   damage: 10
+  dispersion: 0.1
 --- !u!111 &-9154867690905627292
 Animation:
   m_ObjectHideFlags: 0
