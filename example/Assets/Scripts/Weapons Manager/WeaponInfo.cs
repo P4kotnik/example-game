@@ -23,6 +23,8 @@ public class WeaponInfo : MonoBehaviour
     public float fireRate;
     public string typeOfWeapon;
 
+    public float dispersion;
+
     public bool isEquipment;
 
     private void Start()
