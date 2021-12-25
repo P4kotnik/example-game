@@ -144,6 +144,8 @@ MonoBehaviour:
   currentNumberOfMagazins: 0
   fireRate: 1
   typeOfWeapon: shoutgun
+  scaleForCrosshair: 4
+  waitTimeForCrosshair: 0.2
   isEquipment: 0
 --- !u!114 &7167064102403715617
 MonoBehaviour:

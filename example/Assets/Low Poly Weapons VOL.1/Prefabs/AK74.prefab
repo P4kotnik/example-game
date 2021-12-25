@@ -307,6 +307,8 @@ MonoBehaviour:
   currentNumberOfMagazins: 0
   fireRate: 0.1
   typeOfWeapon: normal
+  scaleForCrosshair: 1.7
+  waitTimeForCrosshair: 0.06
   isEquipment: 0
 --- !u!114 &4084074855770104708
 MonoBehaviour:

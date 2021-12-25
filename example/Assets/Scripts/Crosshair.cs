@@ -7,14 +7,15 @@ public class Crosshair : MonoBehaviour
 {
     private RectTransform rectTransform;
     public WeaponsMenager weaponsMenager;
+    public PlayerMove playerMove;
 
     [Range(30f, 250)]
     public float defaultSize = 50f;
     [Range(60f, 250)]
-    public float maxSize = 110f;
+    public float maxSize = 100f;
 
-    public float currentSize;
-    public float scale = 1f;
+    float currentSize;
+    float scale = 1f;
 
     bool wait;
     float waitTime;
@@ -29,17 +30,21 @@ public class Crosshair : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
+        if (playerMove.isMove == true)
         {
             scale = 2f;
             wait = true;
-            waitTime = 0.05f;
+            waitTime = 0.1f;
+            if (currentSize >= maxSize)
+            {
+                scale = 1f;
+            }
         }
         else if (weaponsMenager.isShot)
         {
-            scale = 1.5f;
+            scale = weaponsMenager.currentWeaponInHands.GetComponent<WeaponInfo>().scaleForCrosshair;
             wait = true;
-            waitTime = 0.05f;
+            waitTime = weaponsMenager.currentWeaponInHands.GetComponent<WeaponInfo>().waitTimeForCrosshair;
         }
         else
         {
@@ -54,6 +59,10 @@ public class Crosshair : MonoBehaviour
             else
             {
                 scale = 0.5f;
+                if (currentSize <= defaultSize)
+                {
+                    scale = 1f;
+                }
             }
         }
 
@@ -61,7 +70,15 @@ public class Crosshair : MonoBehaviour
         {
             currentSize = Mathf.Lerp(currentSize, currentSize * scale, Time.deltaTime * 2);
         }
-        //crouching
+        else if (currentSize > maxSize)
+        {
+            currentSize = maxSize;
+        }
+        else if (currentSize < defaultSize)
+        {
+            currentSize = defaultSize;
+        }
+
         rectTransform.sizeDelta = new Vector2(currentSize, currentSize);
     }
 }

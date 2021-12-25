@@ -23,7 +23,9 @@ public class WeaponInfo : MonoBehaviour
     public float fireRate;
     public string typeOfWeapon;
 
-    public float dispersion;
+    //public float dispersion;
+    public float scaleForCrosshair;
+    public float waitTimeForCrosshair;
 
     public bool isEquipment;
 

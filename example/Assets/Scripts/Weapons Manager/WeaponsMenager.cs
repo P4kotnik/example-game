@@ -7,10 +7,11 @@ public class WeaponsMenager : MonoBehaviour
 {
     public GameObject currentWeaponInHands;
     public GameObject secondWeapon;
+    public GameObject crosshair;
     public RecoilScript recoilScript;
     public PlayerMove playerMove;
-    GameObject changeWeapon;
     public PickUp pickUp;
+    GameObject changeWeapon;
 
     [Header("Weapon UI")]
     public Image firstWeaponImage;
@@ -43,6 +44,7 @@ public class WeaponsMenager : MonoBehaviour
     {
         SetImageWeaponsOnUI();
         ChangeWeapon();
+        CrosshairFunction();
         isSprint = playerMove.isSprint;
 
         if (currentWeaponInHands != null)
@@ -158,6 +160,18 @@ public class WeaponsMenager : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    void CrosshairFunction()
+    {
+        if (playerMove.isSprint)
+        {
+            crosshair.SetActive(false);
+        }
+        else
+        {
+            crosshair.SetActive(true);
         }
     }
 }
