@@ -83,7 +83,7 @@ public class PickUp : MonoBehaviour
             if (hit.transform.tag == "pickable")
             {
                 //canPickUp = true;
-
+                Debug.Log(hit.transform.gameObject);
                 return hit.transform.gameObject;
             }
             return hit.transform.gameObject;
