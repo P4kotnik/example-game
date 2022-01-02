@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PickItemUI : MonoBehaviour
 {
-    public Image ItemInSight;
+    public TextMeshProUGUI itemName;
     public Transform ItemPickUI;
 
     public PickUp pickUp;
@@ -16,7 +17,7 @@ public class PickItemUI : MonoBehaviour
         if (pickUp.objectInSight != null && pickUp.objectInSight.tag == "pickable")
         {
             ItemPickUI.gameObject.SetActive(true);
-            ItemInSight.sprite = pickUp.objectInSight.GetComponent<WeaponInfo>().weaponImage;
+            itemName.text = "Pick: "+pickUp.objectInSight.GetComponent<Pickable>().nameForUI;
         }
         else
         {

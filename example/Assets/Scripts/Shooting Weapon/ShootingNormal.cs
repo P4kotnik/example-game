@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShootingNormal : MonoBehaviour
 {
+    float currentSize;
     public WeaponInfo weaponInfo;
     public ParticleSystem shotParticle;
     public GameObject impactEffect;
@@ -28,6 +29,7 @@ public class ShootingNormal : MonoBehaviour
         {
             ShoutgunShot();
         }
+        currentSize = GameObject.Find("Crosshair").GetComponent<Crosshair>().currentSize;
     }
 
     void ShoutgunShot()
@@ -37,7 +39,8 @@ public class ShootingNormal : MonoBehaviour
         layerMask = ~layerMask;
         shotParticle.Play();
         RaycastHit hit;
-        if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, range, layerMask))
+        Vector3 bulletDispersion = new Vector3(Random.Range(-dispersion(), dispersion()), Random.Range(-dispersion(), dispersion()), Random.Range(-dispersion(), dispersion()));
+        if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward + bulletDispersion, out hit, range, layerMask))
         {
             Target target = hit.transform.GetComponent<Target>();
             if (target != null)
@@ -47,5 +50,10 @@ public class ShootingNormal : MonoBehaviour
 
             Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
         }
+    }
+
+    public float dispersion()
+    {
+        return currentSize/1000/1.5f; //currentSize=100, dispersion~0.07
     }
 }

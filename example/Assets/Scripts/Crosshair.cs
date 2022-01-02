@@ -14,7 +14,7 @@ public class Crosshair : MonoBehaviour
     [Range(60f, 250)]
     public float maxSize = 100f;
 
-    float currentSize;
+    public float currentSize;
     float scale = 1f;
 
     bool wait;

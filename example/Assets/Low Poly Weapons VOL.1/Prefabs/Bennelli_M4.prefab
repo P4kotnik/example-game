@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1439891949874879896}
   - component: {fileID: 7167064102403715617}
   - component: {fileID: -9154867690905627292}
+  - component: {fileID: 1092109224}
   m_Layer: 0
   m_Name: Bennelli_M4
   m_TagString: pickable
@@ -183,6 +184,20 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &1092109224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236257789494122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2faa5962c41a8248a662d43c06d85fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 1
+  nameForUI: Bennelli M4
 --- !u!1 &1326079549577358
 GameObject:
   m_ObjectHideFlags: 0

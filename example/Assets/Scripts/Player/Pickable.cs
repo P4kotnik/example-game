@@ -5,4 +5,5 @@ using UnityEngine;
 public class Pickable : MonoBehaviour
 {
     public int ID;
+    public string nameForUI;
 }
