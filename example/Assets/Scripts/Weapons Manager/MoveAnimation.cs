@@ -8,11 +8,6 @@ public class MoveAnimation : MonoBehaviour
     public WeaponsMenager weaponsMenager;
 
     public Animator moveAnimator;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -41,6 +36,15 @@ public class MoveAnimation : MonoBehaviour
                 {
                     moveAnimator.SetBool("sprint", false);
                 }
+
+                if (weaponsMenager.isScoped())
+                {
+                    moveAnimator.SetBool("scope", true);
+                }
+                else
+                {
+                    moveAnimator.SetBool("scope", false);
+                }
                 moveAnimator.SetBool("move", true);
             }
         }
@@ -49,6 +53,15 @@ public class MoveAnimation : MonoBehaviour
             moveAnimator.SetBool("move", false);
             moveAnimator.SetBool("weaponSprint", false);
             moveAnimator.SetBool("sprint", false);
+
+            if (weaponsMenager.isScoped()) //do poprawy
+            {
+                moveAnimator.SetBool("scope", true);
+            }
+            else
+            {
+                moveAnimator.SetBool("scope", false);
+            }
         }
     }
 }

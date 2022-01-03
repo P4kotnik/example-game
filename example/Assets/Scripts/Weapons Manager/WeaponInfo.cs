@@ -67,7 +67,7 @@ public class WeaponInfo : MonoBehaviour
     IEnumerator Reload()
     {
         weaponAnimation.Play(gameObject.name + "Reload");
-         yield return new WaitUntil(() => !weaponAnimation.isPlaying); 
+        yield return new WaitUntil(() => !weaponAnimation.isPlaying); 
 
         currentMagazineCapacity = magazineCapacity;
         currentNumberOfMagazins--;

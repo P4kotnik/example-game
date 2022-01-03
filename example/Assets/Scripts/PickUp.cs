@@ -18,6 +18,9 @@ public class PickUp : MonoBehaviour
     public GameObject currentWeapon;
     GameObject wp;
 
+    [Header("For interact")]
+    public bool interactWithItem;
+
     //bool canPickUp;
 
     // Update is called once per frame
@@ -67,6 +70,17 @@ public class PickUp : MonoBehaviour
                     PickUpWeapon();
                     weaponsMenager.currentWeaponInHands = currentWeapon;
                 }
+            }
+        }
+        else if (objectInSight.tag == "interation")
+        {
+            if (Input.GetKeyDown(pickUpKey))
+            {
+                interactWithItem = true;
+            }
+            else if (Input.GetKeyDown(pickUpKey) && interactWithItem == true)
+            {
+                interactWithItem = false;
             }
         }
     }

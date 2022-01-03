@@ -11,6 +11,7 @@ public class ShootingNormal : MonoBehaviour
     WeaponsMenager weaponsMenager;
     Camera fpsCamera;
     bool isEquipment;
+    public Animation weaponAnimations;
 
     public float range = 100f;
     public float damage = 10f;
@@ -27,13 +28,15 @@ public class ShootingNormal : MonoBehaviour
         isEquipment = weaponInfo.isEquipment;
         if (isEquipment && weaponsMenager.isShot)
         {
+            currentSize = GameObject.Find("Crosshair").GetComponent<Crosshair>().currentSize;
             ShoutgunShot();
         }
-        currentSize = GameObject.Find("Crosshair").GetComponent<Crosshair>().currentSize;
+        
     }
 
     void ShoutgunShot()
     {
+        weaponAnimations.Play(gameObject.name + "Shooting");
         int layerMask = 1 << 7;
 
         layerMask = ~layerMask;
@@ -54,6 +57,6 @@ public class ShootingNormal : MonoBehaviour
 
     public float dispersion()
     {
-        return currentSize/1000/1.5f; //currentSize=100, dispersion~0.07
+        return currentSize/1000/2f; //currentSize=100, dispersion~0.05
     }
 }

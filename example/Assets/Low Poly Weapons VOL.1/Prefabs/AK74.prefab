@@ -308,7 +308,7 @@ MonoBehaviour:
   currentNumberOfMagazins: 0
   fireRate: 0.1
   typeOfWeapon: normal
-  scaleForCrosshair: 2
+  scaleForCrosshair: 3
   waitTimeForCrosshair: 0.06
   isEquipment: 0
 --- !u!114 &4084074855770104708
@@ -340,6 +340,7 @@ Animation:
   m_Animation: {fileID: 0}
   m_Animations:
   - {fileID: 7400000, guid: 2e00fd4a764659647a279dd5e3b88ced, type: 2}
+  - {fileID: 7400000, guid: 67adb8b0c89e1554786e463712c86494, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
