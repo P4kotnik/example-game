@@ -19,10 +19,10 @@ public class PickItemUI : MonoBehaviour
             ItemPickUI.gameObject.SetActive(true);
             itemName.text = "Pick: " + pickUp.objectInSight.GetComponent<Pickable>().nameForUI;
         }
-        else if (pickUp.objectInSight != null && pickUp.objectInSight.tag == "interaction")
+        else if (pickUp.objectInSight != null && pickUp.objectInSight.tag == "interation")
         {
             ItemPickUI.gameObject.SetActive(true);
-            itemName.text = "Interact with: " + pickUp.objectInSight.GetComponent<Pickable>().nameForUI;
+            itemName.text = "Interact with: " + pickUp.objectInSight.GetComponent<Interation>().nameForUI;
         }
         else
         {

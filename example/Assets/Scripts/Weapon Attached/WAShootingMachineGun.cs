@@ -2,41 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootingNormal : MonoBehaviour
+public class WAShootingMachineGun : MonoBehaviour
 {
+    public InterationMeneger interationMeneger;
     float currentSize;
-    public WeaponInfo weaponInfo;
     public ParticleSystem shotParticle;
     public GameObject impactEffect;
-    WeaponsMenager weaponsMenager;
-    Camera fpsCamera;
-    bool isEquipment;
-    public Animation weaponAnimations;
+
+    public Camera fpsCamera;
+    bool isInteraction;
 
     public float range = 100f;
     public float damage = 10f;
 
     void Start()
     {
-        fpsCamera = GameObject.Find("Camera").GetComponent<Camera>();
-        weaponsMenager = GameObject.Find("WeaponMenager").GetComponent<WeaponsMenager>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        isEquipment = weaponInfo.isEquipment;
-        if (isEquipment && weaponsMenager.isShot)
+        isInteraction = interationMeneger.isInteraction;
+        if (isInteraction && Input.GetButton("Fire1"))
         {
             currentSize = GameObject.Find("Crosshair").GetComponent<Crosshair>().currentSize;
             Shooting();
         }
-        
+
+        InterationLayer();
     }
 
     void Shooting()
     {
-        weaponAnimations.Play(gameObject.name + "Shooting");
         int layerMask = 1 << 7;
 
         layerMask = ~layerMask;
@@ -57,6 +55,18 @@ public class ShootingNormal : MonoBehaviour
 
     public float dispersion()
     {
-        return currentSize/1000/2f; //currentSize=100, dispersion~0.05
+        return currentSize / 1000 / 1.5f; //currentSize=100, dispersion~0.07
+    }
+
+    void InterationLayer()
+    {
+        if (isInteraction == true)
+        {
+            gameObject.layer = 7;
+        }
+        else
+        {
+            gameObject.layer = 0; 
+        }
     }
 }

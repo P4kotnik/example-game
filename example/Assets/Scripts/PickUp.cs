@@ -20,6 +20,7 @@ public class PickUp : MonoBehaviour
 
     [Header("For interact")]
     public bool interactWithItem;
+    public GameObject cameraObject;
 
     //bool canPickUp;
 
@@ -74,14 +75,11 @@ public class PickUp : MonoBehaviour
         }
         else if (objectInSight.tag == "interation")
         {
-            if (Input.GetKeyDown(pickUpKey))
-            {
-                interactWithItem = true;
-            }
-            else if (Input.GetKeyDown(pickUpKey) && interactWithItem == true)
-            {
-                interactWithItem = false;
-            }
+            interactWithItem = true;
+        }
+        else if (objectInSight.tag != "interation")
+        {
+            interactWithItem = false;
         }
     }
 

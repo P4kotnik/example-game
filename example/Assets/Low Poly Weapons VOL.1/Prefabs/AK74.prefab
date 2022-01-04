@@ -326,6 +326,7 @@ MonoBehaviour:
   weaponInfo: {fileID: -3883086841476455380}
   shotParticle: {fileID: 2117864341627540179}
   impactEffect: {fileID: 100002, guid: 56bfc2f4b4a0c534c8ef3d0fd1124c44, type: 3}
+  weaponAnimations: {fileID: 7552370173585558447}
   range: 100
   damage: 10
 --- !u!111 &7552370173585558447

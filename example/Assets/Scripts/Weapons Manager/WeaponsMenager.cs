@@ -180,7 +180,6 @@ public class WeaponsMenager : MonoBehaviour
     {
         if (Input.GetButton("Fire2") && isReloading != true)
         {
-
             return true;
         }
         else

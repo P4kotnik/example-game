@@ -29,6 +29,8 @@ public class WeaponInfo : MonoBehaviour
 
     public bool isEquipment;
 
+    public bool reload;
+
     private void Start()
     {
         currentMagazineCapacity = magazineCapacity;
@@ -47,7 +49,7 @@ public class WeaponInfo : MonoBehaviour
 
     bool Equipment()
     {
-        if (transform.IsChildOf(GameObject.Find("Player").transform))
+        if (transform.IsChildOf(GameObject.Find("Player").transform) && GameObject.Find("Player") != null)
         {
             gameObject.layer = 7;
             return true;
@@ -67,7 +69,7 @@ public class WeaponInfo : MonoBehaviour
     IEnumerator Reload()
     {
         weaponAnimation.Play(gameObject.name + "Reload");
-        yield return new WaitUntil(() => !weaponAnimation.isPlaying); 
+        yield return new WaitUntil(() => !weaponAnimation.isPlaying);
 
         currentMagazineCapacity = magazineCapacity;
         currentNumberOfMagazins--;
