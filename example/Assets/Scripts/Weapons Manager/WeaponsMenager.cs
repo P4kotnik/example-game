@@ -44,7 +44,6 @@ public class WeaponsMenager : MonoBehaviour
     {
         SetImageWeaponsOnUI();
         ChangeWeapon();
-        CrosshairEnabled();
         isScoped();
         isSprint = playerMove.isSprint;
 
@@ -161,18 +160,6 @@ public class WeaponsMenager : MonoBehaviour
         else
         {
             return false;
-        }
-    }
-
-    void CrosshairEnabled()
-    {
-        if (playerMove.isSprint)
-        {
-            crosshair.SetActive(false);
-        }
-        else
-        {
-            crosshair.SetActive(true);
         }
     }
 

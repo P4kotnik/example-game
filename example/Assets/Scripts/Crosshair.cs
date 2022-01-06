@@ -8,6 +8,8 @@ public class Crosshair : MonoBehaviour
     private RectTransform rectTransform;
     public WeaponsMenager weaponsMenager;
     public PlayerMove playerMove;
+    public InterationMeneger interationMeneger;
+    public GameObject croshairObject;
 
     [Range(30f, 250)]
     public float defaultSize = 50f;
@@ -30,6 +32,8 @@ public class Crosshair : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CrosshairEnabled();
+
         if (playerMove.isMove == true)
         {
             scale = 2f;
@@ -80,5 +84,17 @@ public class Crosshair : MonoBehaviour
         }
 
         rectTransform.sizeDelta = new Vector2(currentSize, currentSize);
+    }
+
+    void CrosshairEnabled()
+    {
+        if (playerMove.isSprint)
+        {
+            croshairObject.SetActive(false);
+        }
+        else
+        {
+            croshairObject.SetActive(true);
+        }
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class WAShootingMachineGun : MonoBehaviour
 {
     public InterationMeneger interationMeneger;
+    public WARecoilManager wARecoilManager;
     float currentSize;
     public ParticleSystem shotParticle;
     public GameObject impactEffect;
@@ -15,19 +16,31 @@ public class WAShootingMachineGun : MonoBehaviour
     public float range = 100f;
     public float damage = 10f;
 
-    void Start()
-    {
+    public float fireRate;
+    float fireTimer;
 
-    }
+    bool readyToShot;
 
     // Update is called once per frame
     void Update()
     {
         isInteraction = interationMeneger.isInteraction;
-        if (isInteraction && Input.GetButton("Fire1"))
+        if (isInteraction && Input.GetButton("Fire1") && readyToShot == true)
         {
             currentSize = GameObject.Find("Crosshair").GetComponent<Crosshair>().currentSize;
             Shooting();
+            wARecoilManager.Fire();
+            fireTimer = fireRate;
+            readyToShot = false;
+        }
+
+        if (fireTimer >= 0)
+        {
+            fireTimer -= Time.deltaTime;
+        }
+        else
+        {
+            readyToShot = true;
         }
 
         InterationLayer();
