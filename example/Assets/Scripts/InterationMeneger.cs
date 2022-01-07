@@ -5,6 +5,7 @@ using UnityEngine;
 public class InterationMeneger : MonoBehaviour
 {
     public GameObject player;
+    public GetInformation getInformation;
     KeyCode pickKey;
 
     public bool isInteraction;
@@ -21,6 +22,7 @@ public class InterationMeneger : MonoBehaviour
         {
             player.SetActive(false);
             isInteraction = true;
+            getInformation.isMove = false;
         }
         else if (Input.GetKeyDown(pickKey) && isInteraction == true)
         {

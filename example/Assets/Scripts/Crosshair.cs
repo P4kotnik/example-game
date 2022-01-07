@@ -7,7 +7,7 @@ public class Crosshair : MonoBehaviour
 {
     private RectTransform rectTransform;
     public WeaponsMenager weaponsMenager;
-    public PlayerMove playerMove;
+    public GetInformation getInformation;
     public InterationMeneger interationMeneger;
     public GameObject croshairObject;
 
@@ -34,7 +34,7 @@ public class Crosshair : MonoBehaviour
     {
         CrosshairEnabled();
 
-        if (playerMove.isMove == true)
+        if (getInformation.isMove == true)
         {
             scale = 2f;
             wait = true;
@@ -44,11 +44,12 @@ public class Crosshair : MonoBehaviour
                 scale = 1f;
             }
         }
-        else if (weaponsMenager.isShot)
+        else if (getInformation.shot)
         {
-            scale = weaponsMenager.currentWeaponInHands.GetComponent<WeaponInfo>().scaleForCrosshair;
+            scale = getInformation.scaleForCrosshair;
+            waitTime = getInformation.smouthTimeForCrosshair;
+
             wait = true;
-            waitTime = weaponsMenager.currentWeaponInHands.GetComponent<WeaponInfo>().waitTimeForCrosshair;
         }
         else
         {
@@ -88,7 +89,7 @@ public class Crosshair : MonoBehaviour
 
     void CrosshairEnabled()
     {
-        if (playerMove.isSprint)
+        if (getInformation.isSprint)
         {
             croshairObject.SetActive(false);
         }

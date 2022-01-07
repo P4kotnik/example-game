@@ -26,7 +26,7 @@ public class ShootingShoutgun : MonoBehaviour
     void Update()
     {
         isEquipment = weaponInfo.isEquipment;
-        if (isEquipment && weaponsMenager.isShot)
+        if (isEquipment && weaponsMenager.getInformation.shot)
         {
             ShoutgunShot();
         }

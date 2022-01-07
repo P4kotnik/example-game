@@ -49,10 +49,13 @@ public class WeaponInfo : MonoBehaviour
 
     bool Equipment()
     {
-        if (transform.IsChildOf(GameObject.Find("Player").transform) && GameObject.Find("Player") != null)
+        if (GameObject.Find("Player") != null)
         {
-            gameObject.layer = 7;
-            return true;
+            if (transform.IsChildOf(GameObject.Find("Player").transform))
+            {
+                gameObject.layer = 7;
+                return true;
+            }
         }
         gameObject.layer = 0;
         return false;

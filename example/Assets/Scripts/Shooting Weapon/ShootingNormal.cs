@@ -26,7 +26,7 @@ public class ShootingNormal : MonoBehaviour
     void Update()
     {
         isEquipment = weaponInfo.isEquipment;
-        if (isEquipment && weaponsMenager.isShot)
+        if (isEquipment && weaponsMenager.getInformation.shot)
         {
             currentSize = GameObject.Find("Crosshair").GetComponent<Crosshair>().currentSize;
             Shooting();

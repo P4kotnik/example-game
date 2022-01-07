@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class GetInformation : MonoBehaviour
 {
+    public bool shot;
+    public bool isMove;
+    public bool isSprint;
+
+    [Header("For crosshair")]
+    public float scaleForCrosshair;
+    public float smouthTimeForCrosshair;
+
     // Start is called before the first frame update
     void Start()
     {

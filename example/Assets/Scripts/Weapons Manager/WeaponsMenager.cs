@@ -9,6 +9,7 @@ public class WeaponsMenager : MonoBehaviour
     public GameObject secondWeapon;
     public GameObject crosshair;
     public RecoilScript recoilScript;
+    public GetInformation getInformation;
     public PlayerMove playerMove;
     public PickUp pickUp;
     GameObject changeWeapon;
@@ -28,9 +29,6 @@ public class WeaponsMenager : MonoBehaviour
     public bool isReloading;
     public bool readyToShot;
     public bool ammoOut;
-    public bool isShot;
-
-    bool isSprint;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +43,6 @@ public class WeaponsMenager : MonoBehaviour
         SetImageWeaponsOnUI();
         ChangeWeapon();
         isScoped();
-        isSprint = playerMove.isSprint;
 
         if (currentWeaponInHands != null)
         {
@@ -53,18 +50,20 @@ public class WeaponsMenager : MonoBehaviour
             currentMagazineCapacity = currentWeaponInHands.GetComponent<WeaponInfo>().currentMagazineCapacity;
             maxNumberOfMagazins = currentWeaponInHands.GetComponent<WeaponInfo>().maxNumberOfMagazins;
             currentNumberOfMagazins = currentWeaponInHands.GetComponent<WeaponInfo>().currentNumberOfMagazins;
+            getInformation.scaleForCrosshair = currentWeaponInHands.GetComponent<WeaponInfo>().scaleForCrosshair;
+            getInformation.smouthTimeForCrosshair = currentWeaponInHands.GetComponent<WeaponInfo>().waitTimeForCrosshair;
 
             fireRate = currentWeaponInHands.GetComponent<WeaponInfo>().fireRate;
 
             if (Input.GetButton("Fire1") && readyToShot == true)
             {
-                isShot = ShotInfo(true);
+                getInformation.shot = ShotInfo(true);
                 readyToShot = false;
                 fireTimer = fireRate;
             }
             else
             {
-                isShot = ShotInfo(false);
+                getInformation.shot = ShotInfo(false);
             }
 
             if (fireTimer >= 0)
@@ -147,7 +146,7 @@ public class WeaponsMenager : MonoBehaviour
             isReloading = false;
         }
 
-        if (isReloading == true || ammoOut == true || isSprint == true)
+        if (isReloading == true || ammoOut == true || getInformation.isSprint)
         {
             return false;
         }

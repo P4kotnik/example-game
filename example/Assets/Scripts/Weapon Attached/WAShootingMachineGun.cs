@@ -9,6 +9,7 @@ public class WAShootingMachineGun : MonoBehaviour
     float currentSize;
     public ParticleSystem shotParticle;
     public GameObject impactEffect;
+    GetInformation getInformation;
 
     public Camera fpsCamera;
     bool isInteraction;
@@ -19,19 +20,39 @@ public class WAShootingMachineGun : MonoBehaviour
     public float fireRate;
     float fireTimer;
 
+    [Header("For crosshair")]
+    public float scaleForCrosshair;
+    public float waitTimeForCrosshair;
+
     bool readyToShot;
+
+    private void Start()
+    {
+        getInformation = GameObject.Find("PlayerObject").GetComponent<GetInformation>();
+    }
 
     // Update is called once per frame
     void Update()
     {
         isInteraction = interationMeneger.isInteraction;
-        if (isInteraction && Input.GetButton("Fire1") && readyToShot == true)
+        if (isInteraction)
         {
-            currentSize = GameObject.Find("Crosshair").GetComponent<Crosshair>().currentSize;
-            Shooting();
-            wARecoilManager.Fire();
-            fireTimer = fireRate;
-            readyToShot = false;
+            getInformation.scaleForCrosshair = scaleForCrosshair;
+            getInformation.smouthTimeForCrosshair = waitTimeForCrosshair;
+            if (Input.GetButton("Fire1") && readyToShot == true)
+            {
+                getInformation.shot = true;
+
+                currentSize = GameObject.Find("Crosshair").GetComponent<Crosshair>().currentSize;
+                Shooting();
+                wARecoilManager.Fire();
+                fireTimer = fireRate;
+                readyToShot = false;
+            }
+            else
+            {
+                getInformation.shot = false;
+            }
         }
 
         if (fireTimer >= 0)

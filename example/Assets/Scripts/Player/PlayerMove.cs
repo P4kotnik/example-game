@@ -11,10 +11,8 @@ public class PlayerMove : MonoBehaviour
     public float sprint = 20f;
     float defaultSpeed;
     [Space(10)]
-    public bool isMove;
-    public bool isSprint;
-    [Space(10)]
     public KeyCode sprintKey;
+    public GetInformation getInformation;
 
     [Header("Jump, Gravity")]
     public float gravity = -19.62f;
@@ -49,11 +47,11 @@ public class PlayerMove : MonoBehaviour
         characterController.Move(move * speed * Time.deltaTime);
         if ((Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) && isGround == true)
         {
-            isMove = true;
+            getInformation.isMove = true;
         }
         else
         {
-            isMove = false;
+            getInformation.isMove = false;
         }
         Sprint();
 
@@ -69,15 +67,15 @@ public class PlayerMove : MonoBehaviour
 
     void Sprint()
     {
-        if (Input.GetKey(sprintKey) && isMove == true)
+        if (Input.GetKey(sprintKey) && getInformation.isMove == true)
         {
             speed = sprint;
-            isSprint = true;
+            getInformation.isSprint = true;
         }
         else
         {
             speed = defaultSpeed;
-            isSprint = false;
+            getInformation.isSprint = false;
         }
     }
 }

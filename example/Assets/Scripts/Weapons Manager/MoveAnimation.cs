@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveAnimation : MonoBehaviour
 {
-    public PlayerMove playerMove;
+    public GetInformation getInformation;
     public WeaponsMenager weaponsMenager;
 
     public Animator moveAnimator;
@@ -12,9 +12,9 @@ public class MoveAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerMove.isMove == true)
+        if (getInformation.isMove == true)
         {
-            if (playerMove.isSprint == true)
+            if (getInformation.isSprint == true)
             {
                 if (weaponsMenager.currentWeaponInHands != null)
                 {
