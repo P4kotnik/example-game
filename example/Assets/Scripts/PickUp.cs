@@ -18,11 +18,9 @@ public class PickUp : MonoBehaviour
     public GameObject currentWeapon;
     GameObject wp;
 
-    [Header("For interact")]
+    [Header("For interaction")]
     public bool interactWithItem;
     public GameObject cameraObject;
-
-    //bool canPickUp;
 
     // Update is called once per frame
     void Update()
@@ -35,7 +33,6 @@ public class PickUp : MonoBehaviour
                 Drop();
                 weaponsMenager.currentWeaponInHands = weaponsMenager.secondWeapon;
                 weaponsMenager.secondWeapon = null;
-                currentWeapon = weaponsMenager.currentWeaponInHands;
             }
         }
 
@@ -55,7 +52,6 @@ public class PickUp : MonoBehaviour
                     if (weaponsMenager.secondWeapon != null)
                     {
                         Drop();
-                        weaponsMenager.currentWeaponInHands = null;
                         PickUpWeapon();
                         weaponsMenager.currentWeaponInHands = currentWeapon;
                     }
@@ -77,7 +73,7 @@ public class PickUp : MonoBehaviour
         {
             interactWithItem = true;
         }
-        else if (objectInSight.tag != "interation")
+        else
         {
             interactWithItem = false;
         }
@@ -93,15 +89,12 @@ public class PickUp : MonoBehaviour
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, distance, layerMask))
         {
             if (hit.transform.tag == "pickable")
-            {
-                //canPickUp = true;
                 return hit.transform.gameObject;
-            }
-            return hit.transform.gameObject;
+            else
+                return hit.transform.gameObject;
         }
         else
         {
-            //canPickUp = false;
             return null;
         }
     }

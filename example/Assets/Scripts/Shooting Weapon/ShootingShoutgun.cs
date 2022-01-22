@@ -36,8 +36,8 @@ public class ShootingShoutgun : MonoBehaviour
     {
         shotParticle.Play(); //first play particle then recoil (to improve)
         int layerMask = 1 << 7;
-
         layerMask = ~layerMask;
+
         shoutgunShot.Play(gameObject.name + "Shot");
         int i = 0;
         while (i <= 10)

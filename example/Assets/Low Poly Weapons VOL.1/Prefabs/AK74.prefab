@@ -107,7 +107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452442627303592}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.014220075, z: -0.04938767}
+  m_LocalPosition: {x: -0, y: 0.01422007, z: -0.04938767}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4519716788627816}
@@ -174,11 +174,11 @@ GameObject:
   - component: {fileID: 33705837635148522}
   - component: {fileID: 23860282398207496}
   - component: {fileID: -5992612005588942694}
-  - component: {fileID: 3274345350136551160}
   - component: {fileID: -3883086841476455380}
   - component: {fileID: 4084074855770104708}
   - component: {fileID: 7552370173585558447}
   - component: {fileID: 310216323}
+  - component: {fileID: 8589895241006827359}
   m_Layer: 0
   m_Name: AK74
   m_TagString: pickable
@@ -271,19 +271,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &3274345350136551160
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1487774384131766}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.033782385, y: 0.22679614, z: 0.7707256}
-  m_Center: {x: -0.0017576702, y: -0.066226326, z: -0.062597096}
 --- !u!114 &-3883086841476455380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,9 +290,9 @@ MonoBehaviour:
   rightHand: {fileID: 2752557040901863537}
   weaponAnimation: {fileID: 7552370173585558447}
   magazineCapacity: 30
-  currentMagazineCapacity: 0
-  maxNumberOfMagazins: 8
-  currentNumberOfMagazins: 0
+  currentMagazineCapacity: 8
+  maxNumberOfMagazines: 2
+  currentNumberOfMagazines: 0
   fireRate: 0.1
   typeOfWeapon: normal
   scaleForCrosshair: 3
@@ -342,6 +329,7 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: 2e00fd4a764659647a279dd5e3b88ced, type: 2}
   - {fileID: 7400000, guid: 67adb8b0c89e1554786e463712c86494, type: 2}
+  - {fileID: 7400000, guid: 68bc316cafb1f5a47bfc378872bbee98, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -360,6 +348,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   nameForUI: AK74
+--- !u!64 &8589895241006827359
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487774384131766}
+  m_Material: {fileID: 13400000, guid: 13318a7b8994c394e9b1cffd3ab0c014, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 6f966b9a7c817ed49973b4a8762cbbdf, type: 3}
 --- !u!1 &1927369336514790
 GameObject:
   m_ObjectHideFlags: 0

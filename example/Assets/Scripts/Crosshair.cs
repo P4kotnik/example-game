@@ -6,17 +6,17 @@ using UnityEngine.UI;
 public class Crosshair : MonoBehaviour
 {
     private RectTransform rectTransform;
-    public WeaponsMenager weaponsMenager;
+
     public GetInformation getInformation;
-    public InterationMeneger interationMeneger;
-    public GameObject croshairObject;
+    public GameObject crosshairObject;
 
     [Range(30f, 250)]
-    public float defaultSize = 50f;
+    public float defaultSize = 75f;
     [Range(60f, 250)]
-    public float maxSize = 100f;
+    public float maxSize = 125f;
 
     public float currentSize;
+
     float scale = 1f;
 
     bool wait;
@@ -38,7 +38,7 @@ public class Crosshair : MonoBehaviour
         {
             scale = 2f;
             wait = true;
-            waitTime = 0.1f;
+            waitTime = 0.05f;
             if (currentSize >= maxSize)
             {
                 scale = 1f;
@@ -63,7 +63,7 @@ public class Crosshair : MonoBehaviour
             }
             else
             {
-                scale = 0.5f;
+                scale = 0.25f;
                 if (currentSize <= defaultSize)
                 {
                     scale = 1f;
@@ -89,13 +89,13 @@ public class Crosshair : MonoBehaviour
 
     void CrosshairEnabled()
     {
-        if (getInformation.isSprint)
+        if (getInformation.isSprint || getInformation.isScoped)
         {
-            croshairObject.SetActive(false);
+            crosshairObject.SetActive(false);
         }
         else
         {
-            croshairObject.SetActive(true);
+            crosshairObject.SetActive(true);
         }
     }
 }

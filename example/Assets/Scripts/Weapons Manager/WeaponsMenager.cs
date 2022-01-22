@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class WeaponsMenager : MonoBehaviour
 {
+    public GetInformation getInformation;
+    [Space(10)]//weapon in equipment
     public GameObject currentWeaponInHands;
     public GameObject secondWeapon;
-    public GameObject crosshair;
-    public RecoilScript recoilScript;
-    public GetInformation getInformation;
-    public PlayerMove playerMove;
+
+    [Space(10)]//pick up and change weapon
     public PickUp pickUp;
     GameObject changeWeapon;
 
@@ -19,16 +19,23 @@ public class WeaponsMenager : MonoBehaviour
     public Image secondWeaponImage;
 
     [Header("Shooting")]
+    public float fireRate;
+    float fireTimer;
+    public bool readyToShot;
+    public bool isReloading;
+    public bool ammoOut;
+
+    [Space(10)]
     public int magazineCapacity;
     public int currentMagazineCapacity;
-    public int maxNumberOfMagazins;
-    public int currentNumberOfMagazins;
-    public float fireRate;
 
-    float fireTimer;
-    public bool isReloading;
-    public bool readyToShot;
-    public bool ammoOut;
+    [Space(10)]
+    public int maxNumberOfMagazines;
+    public int currentNumberOfMagazines;
+
+    [Space(10)]
+    public GameObject crosshair;
+    public RecoilScript recoilScript;
 
     // Start is called before the first frame update
     void Start()
@@ -42,14 +49,15 @@ public class WeaponsMenager : MonoBehaviour
     {
         SetImageWeaponsOnUI();
         ChangeWeapon();
-        isScoped();
+        getInformation.isScoped = IsScoped();
 
         if (currentWeaponInHands != null)
         {
             magazineCapacity = currentWeaponInHands.GetComponent<WeaponInfo>().magazineCapacity;
             currentMagazineCapacity = currentWeaponInHands.GetComponent<WeaponInfo>().currentMagazineCapacity;
-            maxNumberOfMagazins = currentWeaponInHands.GetComponent<WeaponInfo>().maxNumberOfMagazins;
-            currentNumberOfMagazins = currentWeaponInHands.GetComponent<WeaponInfo>().currentNumberOfMagazins;
+            maxNumberOfMagazines = currentWeaponInHands.GetComponent<WeaponInfo>().maxNumberOfMagazines;
+            currentNumberOfMagazines = currentWeaponInHands.GetComponent<WeaponInfo>().currentNumberOfMagazines;
+
             getInformation.scaleForCrosshair = currentWeaponInHands.GetComponent<WeaponInfo>().scaleForCrosshair;
             getInformation.smouthTimeForCrosshair = currentWeaponInHands.GetComponent<WeaponInfo>().waitTimeForCrosshair;
 
@@ -63,7 +71,7 @@ public class WeaponsMenager : MonoBehaviour
             }
             else
             {
-                getInformation.shot = ShotInfo(false);
+                getInformation.shot = false;
             }
 
             if (fireTimer >= 0)
@@ -82,22 +90,10 @@ public class WeaponsMenager : MonoBehaviour
         if (currentWeaponInHands != null)
         {
             currentWeaponInHands.SetActive(true);
-            if (secondWeapon != null)
-            {
-                secondWeapon.SetActive(false);
-            }
-        }
-
-        if (currentWeaponInHands == null)
-        {
-            firstWeaponImage.enabled = false;
-            secondWeaponImage.enabled = false;
-        }
-        else if (currentWeaponInHands != null)
-        {
             firstWeaponImage.enabled = true;
             if (secondWeapon != null)
             {
+                secondWeapon.SetActive(false);
                 secondWeaponImage.enabled = true;
             }
             else
@@ -105,36 +101,33 @@ public class WeaponsMenager : MonoBehaviour
                 secondWeaponImage.enabled = false;
             }
         }
+        else
+        {
+            firstWeaponImage.enabled = false;
+            secondWeaponImage.enabled = false;
+        }
     }
 
     void ChangeWeapon()
     {
-        if (secondWeapon != null)
-        {
-            secondWeapon.SetActive(false);
-        }
-
         if ((Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha1)) && secondWeapon != null)
         {
+            isReloading = false;
+            currentWeaponInHands.GetComponent<WeaponInfo>().weaponAnimation.Play("Idle");
+
             changeWeapon = currentWeaponInHands;
-            secondWeapon.SetActive(true);
             currentWeaponInHands = secondWeapon;
             secondWeapon = changeWeapon;
-            secondWeapon.SetActive(false);
             changeWeapon = null;
         }
     }
 
     public bool ShotInfo(bool shot)
     {
-        if (currentNumberOfMagazins <= 0 && currentMagazineCapacity <= 0)
-        {
+        if (currentNumberOfMagazines <= 0 && currentMagazineCapacity <= 0)
             ammoOut = true;
-        }
         else
-        {
             ammoOut = false;
-        }
 
         if (currentMagazineCapacity <= 0 && ammoOut == false && isReloading == false)
         {
@@ -146,7 +139,7 @@ public class WeaponsMenager : MonoBehaviour
             isReloading = false;
         }
 
-        if (isReloading == true || ammoOut == true || getInformation.isSprint)
+        if (currentMagazineCapacity <= 0 || ammoOut == true || getInformation.isSprint)
         {
             return false;
         }
@@ -162,15 +155,11 @@ public class WeaponsMenager : MonoBehaviour
         }
     }
 
-    public bool isScoped()
+    bool IsScoped()
     {
         if (Input.GetButton("Fire2") && isReloading != true)
-        {
             return true;
-        }
         else
-        {
             return false;
-        }
     }
 }

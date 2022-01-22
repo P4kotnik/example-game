@@ -37,9 +37,10 @@ public class ShootingNormal : MonoBehaviour
     void Shooting()
     {
         weaponAnimations.Play(gameObject.name + "Shooting");
+        
         int layerMask = 1 << 7;
-
         layerMask = ~layerMask;
+
         shotParticle.Play();
         RaycastHit hit;
         Vector3 bulletDispersion = new Vector3(Random.Range(-dispersion(), dispersion()), Random.Range(-dispersion(), dispersion()), Random.Range(-dispersion(), dispersion()));
@@ -57,6 +58,9 @@ public class ShootingNormal : MonoBehaviour
 
     public float dispersion()
     {
-        return currentSize/1000/2f; //currentSize=100, dispersion~0.05
+        if (weaponsMenager.getInformation.isScoped)
+            return 0;
+        else
+            return currentSize/1000/2f; //currentSize=100, dispersion~0.05
     }
 }

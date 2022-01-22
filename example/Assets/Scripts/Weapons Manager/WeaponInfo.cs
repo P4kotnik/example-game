@@ -10,31 +10,38 @@ public class WeaponInfo : MonoBehaviour
     [Header("WeaponInfo recoil rotation:z - kickBack back")]
     public Vector3 recoilKickBack;
 
+    [Space(10)]
     public Sprite weaponImage;
     public Transform leftHand;
     public Transform rightHand;
     public Animation weaponAnimation;
 
+    [Header("Bullets")]
     public int magazineCapacity;
     public int currentMagazineCapacity;
-    public int maxNumberOfMagazins;
-    public int currentNumberOfMagazins;
 
+    [Header("Magazines")]
+    public int maxNumberOfMagazines;
+    public int currentNumberOfMagazines;
+
+    [Space(10)]
+    //fire rate
     public float fireRate;
+    //weapon type
     public string typeOfWeapon;
 
-    //public float dispersion;
+    [Space(10)]
+    //crosshair
     public float scaleForCrosshair;
     public float waitTimeForCrosshair;
 
+    [Space(10)]
     public bool isEquipment;
-
-    public bool reload;
 
     private void Start()
     {
         currentMagazineCapacity = magazineCapacity;
-        currentNumberOfMagazins = maxNumberOfMagazins;
+        currentNumberOfMagazines = maxNumberOfMagazines;
     }
 
     private void Update()
@@ -53,17 +60,17 @@ public class WeaponInfo : MonoBehaviour
         {
             if (transform.IsChildOf(GameObject.Find("Player").transform))
             {
-                gameObject.layer = 7;
+                gameObject.layer = 7; //player's layer
                 return true;
             }
         }
-        gameObject.layer = 0;
+        gameObject.layer = 0; //default layer
         return false;
     }
 
-    public void Reloading()
+    public void Reloading() //do poprawa
     {
-        if (currentNumberOfMagazins > 0)
+        if (currentNumberOfMagazines > 0)
         {
             StartCoroutine(Reload());
         }
@@ -75,6 +82,6 @@ public class WeaponInfo : MonoBehaviour
         yield return new WaitUntil(() => !weaponAnimation.isPlaying);
 
         currentMagazineCapacity = magazineCapacity;
-        currentNumberOfMagazins--;
+        currentNumberOfMagazines--;
     }
 }

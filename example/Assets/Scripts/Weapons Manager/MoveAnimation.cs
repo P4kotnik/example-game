@@ -25,6 +25,7 @@ public class MoveAnimation : MonoBehaviour
                     moveAnimator.SetBool("sprint", true);
                 }
                 moveAnimator.SetBool("move", false);
+                moveAnimator.SetBool("scope", false);
             }
             else
             {
@@ -37,7 +38,7 @@ public class MoveAnimation : MonoBehaviour
                     moveAnimator.SetBool("sprint", false);
                 }
 
-                if (weaponsMenager.isScoped())
+                if (getInformation.isScoped)
                 {
                     moveAnimator.SetBool("scope", true);
                 }
@@ -54,7 +55,7 @@ public class MoveAnimation : MonoBehaviour
             moveAnimator.SetBool("weaponSprint", false);
             moveAnimator.SetBool("sprint", false);
 
-            if (weaponsMenager.isScoped()) //do poprawy
+            if (getInformation.isScoped)
             {
                 moveAnimator.SetBool("scope", true);
             }

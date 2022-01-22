@@ -10,16 +10,11 @@ public class HUDMenager : MonoBehaviour
     public TextMeshProUGUI magazines;
 
     public WeaponsMenager weaponsMenager;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
         bullets.text = weaponsMenager.currentMagazineCapacity + "|" + weaponsMenager.magazineCapacity;
-        magazines.text = weaponsMenager.currentNumberOfMagazins.ToString();
+        magazines.text = weaponsMenager.currentNumberOfMagazines.ToString();
     }
 }

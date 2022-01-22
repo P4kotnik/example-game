@@ -23,6 +23,7 @@ public class InterationMeneger : MonoBehaviour
             player.SetActive(false);
             isInteraction = true;
             getInformation.isMove = false;
+            getInformation.isSprint = false;
         }
         else if (Input.GetKeyDown(pickKey) && isInteraction == true)
         {

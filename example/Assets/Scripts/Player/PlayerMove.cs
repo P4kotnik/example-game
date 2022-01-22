@@ -5,19 +5,20 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     private CharacterController characterController;
+    public GetInformation getInformation;
 
     [Header("Atributs")]
     public float speed = 10f;
     public float sprint = 20f;
+    public float scopedSpeed = 5f;
     float defaultSpeed;
     [Space(10)]
     public KeyCode sprintKey;
-    public GetInformation getInformation;
 
     [Header("Jump, Gravity")]
     public float gravity = -19.62f;
     public Transform groundCheck;
-    public bool isGround;
+    bool isGround;
     public float groundDistance = 0.4f;
     public float maxJumpHeight = 2f;
     public LayerMask groundMask;
@@ -36,6 +37,7 @@ public class PlayerMove : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
         isGround = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        getInformation.isGround = isGround;
 
         if (isGround && velocity.y < 0)
         {
@@ -54,6 +56,7 @@ public class PlayerMove : MonoBehaviour
             getInformation.isMove = false;
         }
         Sprint();
+        Scope();
 
         //gravity
         velocity.y += gravity * Time.deltaTime;
@@ -76,6 +79,14 @@ public class PlayerMove : MonoBehaviour
         {
             speed = defaultSpeed;
             getInformation.isSprint = false;
+        }
+    }
+
+    void Scope()
+    {
+        if (getInformation.isScoped == true && getInformation.isSprint == false)
+        {
+            speed = scopedSpeed;
         }
     }
 }
